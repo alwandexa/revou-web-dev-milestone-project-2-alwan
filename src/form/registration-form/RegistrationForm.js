@@ -1,0 +1,66 @@
+import React, { useState } from "react";
+import { Button, message, Steps } from "antd";
+import PersonalInformation from "../personal-information/PersonalInformation";
+import AddressInformation from "../address-information/AddressInformation";
+import AccountInformation from "../account-information/AccountInformation";
+
+const RegistrationForm = () => {
+  const [current, setCurrent] = useState(0);
+
+  const steps = [
+    {
+      title: "Personal Information",
+      status: "finish",
+      content: <PersonalInformation />,
+    },
+    {
+      title: "Address Information",
+      status: "finish",
+      content: <AddressInformation />,
+    },
+    {
+      title: "Account Information",
+      status: "process",
+      content: <AccountInformation />,
+    },
+    {
+      title: "Done",
+      status: "wait",
+      content: "Sudah selesai",
+    },
+  ];
+
+  const items = steps.map((item) => ({ key: item.title, title: item.title }));
+
+  const next = () => {
+    setCurrent(current + 1);
+  };
+
+  const prev = () => {
+    setCurrent(current - 1);
+  };
+
+  return (
+    <>
+      <Steps current={current} items={items} />
+      <div>{steps[current].content}</div>
+      <div>
+        {current > 0 && <Button onClick={() => prev()}>Previous</Button>}
+        {current < steps.length - 1 && (
+          <Button type="primary" onClick={() => next()}>
+            Next
+          </Button>
+        )}
+        {current === steps.length - 1 && (
+          <Button
+            type="primary"
+            onClick={() => message.success("Processing complete!")}
+          >
+            Done
+          </Button>
+        )}
+      </div>
+    </>
+  );
+};
+export default RegistrationForm;
