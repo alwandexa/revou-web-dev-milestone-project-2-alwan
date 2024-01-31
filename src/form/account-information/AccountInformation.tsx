@@ -1,6 +1,11 @@
+import React, { FC } from 'react';
 import { Form, Input } from "antd";
 
-const AccountInformation = ({ form }) => {
+interface AccountInformationProps {
+  form: any;
+}
+
+const AccountInformation: FC<AccountInformationProps> = ({ form }) => {
   const validPassword = new RegExp("^(?=.*?[A-Za-z])(?=.*?[0-9]).{8,}$");
 
   return (

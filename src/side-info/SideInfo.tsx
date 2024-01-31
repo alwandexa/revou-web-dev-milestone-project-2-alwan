@@ -1,7 +1,8 @@
 import { Button } from "antd";
 import Title from "antd/lib/typography/Title";
+import React, { FC } from "react";
 
-const SideInfo = () => {
+const SideInfo: FC = () => {
   return (
     <div className="side-info">
       <Title level={1} style={{ color: "white" }}>

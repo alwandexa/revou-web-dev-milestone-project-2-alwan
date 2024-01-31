@@ -1,6 +1,12 @@
 import { DatePicker, Form, Input, Radio, Space } from "antd";
+import React, { FC } from "react";
 
-const PersonalInformation = ({ form }) => {
+interface PersonalInformationProps {
+  form: any;
+}
+
+
+const PersonalInformation: FC<PersonalInformationProps> = ({ form }) => {
   return (
     <Form form={form} layout="vertical">
       <Form.Item

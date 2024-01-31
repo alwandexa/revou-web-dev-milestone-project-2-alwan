@@ -45,7 +45,6 @@ const RegistrationForm = () => {
   const items = steps.map((item) => ({
     key: item.title,
     title: item.title,
-    icon: item.icon,
   }));
 
   const next = () => {

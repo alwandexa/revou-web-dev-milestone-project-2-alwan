@@ -1,7 +1,12 @@
+import React, { FC } from 'react';
 import { Form, Input, Select, Space } from "antd";
 import { Option } from "antd/es/mentions";
 
-const AddressInformation = ({ form }) => {
+interface AddressInformationProps {
+  form: any;
+}
+
+const AddressInformation: FC<AddressInformationProps> = ({ form }) => {
   return (
     <Form
       form={form}
@@ -35,7 +40,7 @@ const AddressInformation = ({ form }) => {
         <Form.Item
           name="ZIP Code"
           label="ZIP Code"
-          rules={[{ type: "any", required: true }]}
+          rules={[{ type: "string", required: true }]}
         >
           <Input type="number" />
         </Form.Item>

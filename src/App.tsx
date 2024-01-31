@@ -3,8 +3,9 @@ import { Content } from "antd/es/layout/layout";
 import "../src/css/main.css";
 import RegistrationForm from "./form/registration-form/RegistrationForm";
 import SideInfo from "./side-info/SideInfo";
+import React, { FC } from "react";
 
-function App() {
+const App: FC = () => {
   return (
     <Layout>
       <Content>
