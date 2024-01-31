@@ -1,9 +1,11 @@
+import React, { FC } from "react";
+
 import { Card, Form } from "antd";
+import Title from "antd/lib/typography/Title";
+
 import PersonalInformation from "../personal-information/PersonalInformation";
 import AddressInformation from "../address-information/AddressInformation";
 import AccountInformation from "../account-information/AccountInformation";
-import Title from "antd/lib/typography/Title";
-import React, { FC } from "react";
 
 interface FormReviewProps {
   form: any;

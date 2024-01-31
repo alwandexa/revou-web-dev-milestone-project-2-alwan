@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 
 import { Button, Card, Flex, Form, message, Steps } from "antd";
+import Title from "antd/lib/typography/Title";
+
 import PersonalInformation from "../personal-information/PersonalInformation";
 import AddressInformation from "../address-information/AddressInformation";
 import AccountInformation from "../account-information/AccountInformation";
 import FormReview from "../form-review/FormReview";
-import Title from "antd/lib/typography/Title";
 
 const RegistrationForm = () => {
   const [form] = Form.useForm();

@@ -1,7 +1,9 @@
+import React from 'react';
+
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Form } from 'antd';
+
 import PersonalInformation from './PersonalInformation';
-import React from 'react';
 
 describe('PersonalInformation', () => {
     const [form] = Form.useForm();

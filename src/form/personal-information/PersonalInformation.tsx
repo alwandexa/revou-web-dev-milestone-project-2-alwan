@@ -1,5 +1,6 @@
-import { DatePicker, Form, Input, Radio, Space } from "antd";
 import React, { FC } from "react";
+
+import { DatePicker, Form, Input, Radio, Space } from "antd";
 
 interface PersonalInformationProps {
   form: any;

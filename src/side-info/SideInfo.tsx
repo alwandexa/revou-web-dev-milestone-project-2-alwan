@@ -1,6 +1,7 @@
+import React, { FC } from "react";
+
 import { Button } from "antd";
 import Title from "antd/lib/typography/Title";
-import React, { FC } from "react";
 
 const SideInfo: FC = () => {
   return (
