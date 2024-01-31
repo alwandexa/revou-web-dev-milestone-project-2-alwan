@@ -1,42 +1,44 @@
 import React, { useState } from "react";
-import { Button, message, Steps } from "antd";
+
+import { Button, Card, Flex, Form, message, Steps } from "antd";
 import PersonalInformation from "../personal-information/PersonalInformation";
 import AddressInformation from "../address-information/AddressInformation";
 import AccountInformation from "../account-information/AccountInformation";
-import {
-  FileDoneOutlined,
-  HomeOutlined,
-  KeyOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
+import FormReview from "../form-review/FormReview";
+import Title from "antd/lib/typography/Title";
 
 const RegistrationForm = () => {
+  const [form] = Form.useForm();
   const [current, setCurrent] = useState(0);
 
   const steps = [
     {
       title: "Personal Information",
-      status: "finish",
-      icon: <UserOutlined />,
-      content: <PersonalInformation />,
+      content: (
+        <Card>
+          <PersonalInformation form={form} />
+        </Card>
+      ),
     },
     {
       title: "Address Information",
-      status: "finish",
-      icon: <HomeOutlined />,
-      content: <AddressInformation />,
+      content: (
+        <Card>
+          <AddressInformation form={form} />
+        </Card>
+      ),
     },
     {
       title: "Account Information",
-      status: "wait",
-      icon: <KeyOutlined />,
-      content: <AccountInformation />,
+      content: (
+        <Card>
+          <AccountInformation form={form} />
+        </Card>
+      ),
     },
     {
-      title: "Done",
-      status: "wait",
-      icon: <FileDoneOutlined />,
-      content: "Sudah selesai",
+      title: "Review",
+      content: <FormReview form={form} />,
     },
   ];
 
@@ -47,7 +49,14 @@ const RegistrationForm = () => {
   }));
 
   const next = () => {
-    setCurrent(current + 1);
+    form
+      .validateFields()
+      .then(() => {
+        setCurrent(current + 1);
+      })
+      .catch((err) => {
+        console.log("Failed", err);
+      });
   };
 
   const prev = () => {
@@ -56,23 +65,37 @@ const RegistrationForm = () => {
 
   return (
     <>
-      <Steps current={current} items={items} />
-      <div>{steps[current].content}</div>
-      <div>
-        {current > 0 && <Button onClick={() => prev()}>Previous</Button>}
-        {current < steps.length - 1 && (
-          <Button type="primary" onClick={() => next()}>
-            Next
+      <div className="registration-form">
+        <Title level={2}>
+          {current === steps.length - 1 ? "Final " : ""}Step{" "}
+          {current < steps.length - 1 ? current + 1 : ""}:{" "}
+          {steps[current].title}
+        </Title>
+        <div className="step-content">{steps[current].content}</div>
+        <br />
+        <Flex justify="center" gap={"1em"}>
+          <Button disabled={current === 0} onClick={() => prev()}>
+            Previous
           </Button>
-        )}
-        {current === steps.length - 1 && (
-          <Button
-            type="primary"
-            onClick={() => message.success("Processing complete!")}
-          >
-            Done
-          </Button>
-        )}
+          {current < steps.length - 1 && (
+            <Button type="primary" onClick={() => next()}>
+              Next
+            </Button>
+          )}
+          {current === steps.length - 1 && (
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+          )}
+        </Flex>
+        <br />
+        <Steps
+          progressDot
+          current={current}
+          items={items}
+          labelPlacement="vertical"
+          responsive={true}
+        />
       </div>
     </>
   );
