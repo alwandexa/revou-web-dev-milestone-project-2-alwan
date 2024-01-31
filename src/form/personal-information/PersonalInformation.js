@@ -1,33 +1,40 @@
-import { Form, Input } from "antd";
+import { DatePicker, Form, Input, Radio, Space } from "antd";
 
-const PersonalInformation = () => {
-  const [form] = Form.useForm();
-
+const PersonalInformation = ({ form }) => {
   return (
-    <Form form={form}>
+    <Form form={form} layout="vertical">
       <Form.Item
-        name="fullName"
-        label="Full Name"
-        rules={[{ type: "text", required: true }]}
+        name="Name"
+        label="Name"
+        rules={[{ type: "string", required: true }]}
       >
         <Input />
       </Form.Item>
 
       <Form.Item
-        name="email"
+        name="Email"
         label="Email"
         rules={[{ type: "email", required: true }]}
       >
         <Input />
       </Form.Item>
 
-      <Form.Item
-        name="birthDate"
-        label="Birth Date"
-        rules={[{ type: "date", required: true }]}
-      >
-        <Input />
-      </Form.Item>
+      <Space.Compact>
+        <Form.Item
+          name="Birth Place"
+          label="Birth Place"
+          rules={[{ type: "string", required: true }]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          name="Birth Date"
+          label="Birth Date"
+          rules={[{ type: "date", required: true }]}
+        >
+          <DatePicker />
+        </Form.Item>
+      </Space.Compact>
     </Form>
   );
 };
