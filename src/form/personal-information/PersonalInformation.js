@@ -35,6 +35,13 @@ const PersonalInformation = ({ form }) => {
           <DatePicker />
         </Form.Item>
       </Space.Compact>
+
+      <Form.Item name="Gender" label="Gender" rules={[{ required: true }]}>
+        <Radio.Group>
+          <Radio value="Male">Male</Radio>
+          <Radio value="Female">Female</Radio>
+        </Radio.Group>
+      </Form.Item>
     </Form>
   );
 };
