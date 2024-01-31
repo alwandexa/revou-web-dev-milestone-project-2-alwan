@@ -52,7 +52,6 @@ const AddressInformation: FC<AddressInformationProps> = ({ form }) => {
         rules={[
           {
             required: true,
-            message: "Please select your favourite colors!",
           },
         ]}
       >

@@ -21,9 +21,9 @@ const AccountInformation: FC<AccountInformationProps> = ({ form }) => {
       <Form.Item
         name="Password"
         label="Password"
-        rules={[{ type: "string", pattern: validPassword, required: true }]}
+        rules={[{ type: "string", pattern: validPassword, message:"Password don't meet requirement", required: true }]}
       >
-        <Input.Password placeholder="Password must contain a-z, A-Z, 1-9, and !@#$%" />
+        <Input.Password placeholder="Password must contain at least 8 characters, a-z, A-Z, 1-9, and !@#$%" />
       </Form.Item>
 
       <Form.Item
@@ -40,7 +40,7 @@ const AccountInformation: FC<AccountInformationProps> = ({ form }) => {
                 return Promise.resolve();
               }
               return Promise.reject(
-                new Error("The password that you entered do not match!")
+                new Error("Password that you entered do not match")
               );
             },
           }),
