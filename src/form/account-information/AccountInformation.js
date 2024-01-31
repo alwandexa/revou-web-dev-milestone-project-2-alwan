@@ -1,14 +1,14 @@
 import { Form, Input } from "antd";
 
-const AccountInformation = () => {
-  const [form] = Form.useForm();
+const AccountInformation = ({ form }) => {
+  const validPassword = new RegExp("^(?=.*?[A-Za-z])(?=.*?[0-9]).{8,}$");
 
   return (
-    <Form form={form}>
+    <Form form={form} layout="vertical">
       <Form.Item
         name="Username"
         label="Username"
-        rules={[{ type: "text", required: true }]}
+        rules={[{ type: "string", required: true }]}
       >
         <Input />
       </Form.Item>
@@ -16,17 +16,32 @@ const AccountInformation = () => {
       <Form.Item
         name="Password"
         label="Password"
-        rules={[{ type: "password", required: true }]}
+        rules={[{ type: "string", pattern: validPassword, required: true }]}
       >
-        <Input />
+        <Input.Password placeholder="Password must contain a-z, A-Z, 1-9, and !@#$%" />
       </Form.Item>
 
       <Form.Item
         name="Re-Password"
         label="Re-Password"
-        rules={[{ type: "password", required: true }]}
+        dependencies={["Password"]}
+        rules={[
+          {
+            required: true,
+          },
+          ({ getFieldValue }) => ({
+            validator(_, value) {
+              if (!value || getFieldValue("Password") === value) {
+                return Promise.resolve();
+              }
+              return Promise.reject(
+                new Error("The password that you entered do not match!")
+              );
+            },
+          }),
+        ]}
       >
-        <Input />
+        <Input.Password placeholder="Enter password again" />
       </Form.Item>
     </Form>
   );
