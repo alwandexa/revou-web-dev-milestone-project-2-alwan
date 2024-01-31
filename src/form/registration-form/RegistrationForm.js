@@ -63,6 +63,12 @@ const RegistrationForm = () => {
     setCurrent(current - 1);
   };
 
+  const submitForm = () => {
+    setCurrent(0);
+    form.resetFields();
+    message.success("Registered successfully!");
+  };
+
   return (
     <>
       <div className="registration-form">
@@ -83,7 +89,7 @@ const RegistrationForm = () => {
             </Button>
           )}
           {current === steps.length - 1 && (
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit" onClick={submitForm}>
               Submit
             </Button>
           )}
