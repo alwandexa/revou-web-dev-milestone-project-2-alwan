@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 
 import { Form, Input, Select, Space } from "antd";
-import { Option } from "antd/es/mentions";
 
 interface AddressInformationProps {
   form: any;
@@ -57,9 +56,9 @@ const AddressInformation: FC<AddressInformationProps> = ({ form }) => {
         ]}
       >
         <Select>
-          <Option value="Indonesia">Indonesia</Option>
-          <Option value="America">America</Option>
-          <Option value="China">China</Option>
+          <Select.Option value="Indonesia">Indonesia</Select.Option>
+          <Select.Option value="America">America</Select.Option>
+          <Select.Option value="China">China</Select.Option>
         </Select>
       </Form.Item>
     </Form>

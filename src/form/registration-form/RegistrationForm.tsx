@@ -53,7 +53,9 @@ const RegistrationForm = () => {
       .validateFields()
       .then(() => {
         setCurrent(current + 1);
-      })
+      }).catch((err) => {
+        console.log("Failed", err);
+      });
   };
 
   const prev = () => {
