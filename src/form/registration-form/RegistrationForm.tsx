@@ -1,23 +1,27 @@
 import React, { useState } from "react";
-
-import { Button, Card, Flex, Form, message, Steps } from "antd";
+import { Button, Card, Flex, Form, Steps } from "antd";
 import Title from "antd/lib/typography/Title";
+import { useSetRecoilState } from "recoil";
+import { useNavigate } from "react-router-dom";
 
 import PersonalInformation from "../personal-information/PersonalInformation";
 import AddressInformation from "../address-information/AddressInformation";
 import AccountInformation from "../account-information/AccountInformation";
 import FormReview from "../form-review/FormReview";
+import { registeredData } from "../../recoil/atom/RegisteredData";
 
 const RegistrationForm = () => {
   const [form] = Form.useForm();
   const [current, setCurrent] = useState(0);
+  const setRegisteredFormData = useSetRecoilState(registeredData)
+  const navigate = useNavigate();
 
   const steps = [
     {
       title: "Personal Information",
       content: (
         <Card>
-          <PersonalInformation form={form} />
+          <PersonalInformation />
         </Card>
       ),
     },
@@ -25,7 +29,7 @@ const RegistrationForm = () => {
       title: "Address Information",
       content: (
         <Card>
-          <AddressInformation form={form} />
+          <AddressInformation />
         </Card>
       ),
     },
@@ -33,13 +37,13 @@ const RegistrationForm = () => {
       title: "Account Information",
       content: (
         <Card>
-          <AccountInformation form={form} />
+          <AccountInformation />
         </Card>
       ),
     },
     {
       title: "Review",
-      content: <FormReview form={form} />,
+      content: <FormReview />,
     },
   ];
 
@@ -63,10 +67,14 @@ const RegistrationForm = () => {
   };
 
   const submitForm = () => {
-    setCurrent(0);
-    form.resetFields();
-    message.success("Registered successfully!");
+    form.submit();
   };
+
+  const handleSubmitForm = () => {
+    setRegisteredFormData(form.getFieldsValue());
+    form.resetFields();
+    navigate('/');
+  }
 
   return (
     <>
@@ -76,7 +84,11 @@ const RegistrationForm = () => {
           {current < steps.length - 1 ? current + 1 : ""}:{" "}
           {steps[current].title}
         </Title>
-        <div className="step-content">{steps[current].content}</div>
+        <div className="step-content">
+          <Form form={form} layout="vertical" onFinish={handleSubmitForm} disabled={current === steps.length - 1 ? true : false}>
+            {steps[current].content}
+          </Form>
+        </div>
         <br />
         <Flex justify="center" gap={"1em"}>
           <Button disabled={current === 0} onClick={() => prev()}>
@@ -88,7 +100,7 @@ const RegistrationForm = () => {
             </Button>
           )}
           {current === steps.length - 1 && (
-            <Button type="primary" htmlType="submit" onClick={submitForm}>
+            <Button type="primary" onClick={submitForm}>
               Submit
             </Button>
           )}
@@ -105,4 +117,5 @@ const RegistrationForm = () => {
     </>
   );
 };
+
 export default RegistrationForm;
