@@ -1,15 +1,9 @@
-import React, { FC } from "react";
-
+import React from "react";
 import { DatePicker, Form, Input, Radio, Space } from "antd";
 
-interface PersonalInformationProps {
-  form: any;
-}
-
-
-const PersonalInformation: FC<PersonalInformationProps> = ({ form }) => {
+const PersonalInformation = () => {
   return (
-    <Form form={form} layout="vertical">
+    <>
       <Form.Item
         name="Name"
         label="Name"
@@ -49,7 +43,7 @@ const PersonalInformation: FC<PersonalInformationProps> = ({ form }) => {
           <Radio value="Female">Female</Radio>
         </Radio.Group>
       </Form.Item>
-    </Form>
+    </>
   );
 };
 
