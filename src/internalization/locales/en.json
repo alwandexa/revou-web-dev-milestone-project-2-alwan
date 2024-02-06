@@ -1,0 +1,10 @@
+{
+  "greeting": "Hello",
+  "name": "Name",
+  "email": "Email",
+  "birthplace": "Birthplace",
+  "birthdate": "Birthdate",
+  "sign-in": "Sign In",
+  "sign-up": "Sign Up",
+  "search-placeholder": "Search for anything"
+}
