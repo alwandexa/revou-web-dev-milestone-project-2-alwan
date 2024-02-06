@@ -1,7 +1,48 @@
 {
-    "greeting": "Halo",
-    "name": "Nama",
-    "email": "Email",
-    "birthplace": "Tempat Lahir",
-    "birthdate": "Tanggal Lahir"
+  "greeting": "Halo",
+  "sign-in": "Masuk",
+  "sign-up": "Daftar",
+  "search-placeholder": "Cari apa saja",
+  "your-data": "Data Anda",
+  "learning-history": "Riwayat Pembelajaran",
+  "this-month": "Bulan ini",
+  "reverse": "Balik",
+
+  "registration": "Pendaftaran",
+  "why-choose-us": "Mengapa memilih kami?",
+  "personal-information": "Informasi Pribadi",
+  "address-information": "Informasi Alamat",
+  "account-information": "Informasi Akun",
+  "review": "Tinjau",
+  "step": "Langkah",
+  "previous": "Sebelumnya",
+  "next": "Berikutnya",
+  "submit": "Daftar",
+
+  "is-required": "diperlukan",
+  "invalid": "tidak valid",
+  "password-validation": "Kata sandi tidak sesuai ketentuan",
+  "password-not-match": "Kata sandi yang anda tulis tidak sama",
+
+  "password-placeholder": "Kata sandi harus mengandung 8 karakter, a-z, A-Z, 1-9, dan !@#$%",
+  "re-password-placeholder": "Masukkan kembali kata sandi anda",
+
+  "name": "Nama",
+  "email": "Email",
+  "birthplace": "Tempat Lahir",
+  "birthdate": "Tanggal Lahir",
+  "address": "Alamat",
+  "gender": "Jenis Kelamin",
+  "male": "Laki-laki",
+  "female": "Perempuan",
+
+  "street-adress": "Jalan",
+  "city": "Kota",
+  "state": "Provinsi",
+  "zip-code": "Kode Pos",
+  "country": "Negara",
+
+  "username": "Nama Pengguna",
+  "password": "Kata Sandi",
+  "re-password": "Ulangi Kata Sandi"
 }

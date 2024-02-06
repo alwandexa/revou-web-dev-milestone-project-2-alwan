@@ -4,7 +4,10 @@ interface FormData {
     Name: string;
     Email: string;
     Birthplace: string;
+    Birthdate: string;
+    Address: string;
     Gender: string;
+    City: string;
 }
 
 export const registeredData = atom<FormData>({
@@ -13,6 +16,9 @@ export const registeredData = atom<FormData>({
         Name: "",
         Email: "",
         Birthplace: "",
+        Birthdate: "",
+        Address: "",
         Gender: "",
+        City: ""
     }
 })

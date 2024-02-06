@@ -1,15 +1,15 @@
-import React from 'react';
-
 import { Form, Input } from "antd";
+import { useTranslation } from 'react-i18next';
 
 const AccountInformation = () => {
+  const { t } = useTranslation();
   const validPassword = new RegExp("^(?=.*?[A-Za-z])(?=.*?[0-9]).{8,}$");
 
   return (
     <>
       <Form.Item
         name="Username"
-        label="Username"
+        label={t("username")}
         rules={[{ type: "string", required: true }]}
       >
         <Input />
@@ -17,15 +17,15 @@ const AccountInformation = () => {
 
       <Form.Item
         name="Password"
-        label="Password"
-        rules={[{ type: "string", pattern: validPassword, message: "Password don't meet requirement", required: true }]}
+        label={t("password")}
+        rules={[{ type: "string", pattern: validPassword, message: t("password-validation"), required: true }]}
       >
-        <Input.Password placeholder="Password must contain at least 8 characters, a-z, A-Z, 1-9, and !@#$%" />
+        <Input.Password placeholder={t("password-placeholder")} />
       </Form.Item>
 
       <Form.Item
         name="Re-Password"
-        label="Re-Password"
+        label={t("re-password")}
         dependencies={["Password"]}
         rules={[
           {
@@ -37,13 +37,13 @@ const AccountInformation = () => {
                 return Promise.resolve();
               }
               return Promise.reject(
-                new Error("Password that you entered do not match")
+                new Error(t("password-not-match"))
               );
             },
           }),
         ]}
       >
-        <Input.Password placeholder="Enter password again" />
+        <Input.Password placeholder={t("re-password-placeholder")} />
       </Form.Item></>
   );
 };

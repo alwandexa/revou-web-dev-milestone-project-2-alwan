@@ -2,14 +2,17 @@ import React, { FC } from "react";
 
 import { Button } from "antd";
 import Title from "antd/lib/typography/Title";
+import { useTranslation } from "react-i18next";
 
 const SideInfo: FC = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="side-info">
       <Title level={1} style={{ color: "white" }}>
         <b>DexaDemy</b>
         <br />
-        Registration
+        {t("registration")}
       </Title>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec dolor
@@ -32,7 +35,7 @@ const SideInfo: FC = () => {
         Donec rutrum placerat dui, ut accumsan mauris congue sit amet. Nulla
         lobortis tellus ut purus luctus, in consectetur massa consequat.
       </p>
-      <Button>Why chooose us?</Button>
+      <Button>{t("why-choose-us")}</Button>
     </div>
   );
 };
