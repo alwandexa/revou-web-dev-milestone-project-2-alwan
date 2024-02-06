@@ -1,16 +1,12 @@
-import React, { FC } from 'react';
+import React from 'react';
 
 import { Form, Input } from "antd";
 
-interface AccountInformationProps {
-  form: any;
-}
-
-const AccountInformation: FC<AccountInformationProps> = ({ form }) => {
+const AccountInformation = () => {
   const validPassword = new RegExp("^(?=.*?[A-Za-z])(?=.*?[0-9]).{8,}$");
 
   return (
-    <Form form={form} layout="vertical">
+    <>
       <Form.Item
         name="Username"
         label="Username"
@@ -22,7 +18,7 @@ const AccountInformation: FC<AccountInformationProps> = ({ form }) => {
       <Form.Item
         name="Password"
         label="Password"
-        rules={[{ type: "string", pattern: validPassword, message:"Password don't meet requirement", required: true }]}
+        rules={[{ type: "string", pattern: validPassword, message: "Password don't meet requirement", required: true }]}
       >
         <Input.Password placeholder="Password must contain at least 8 characters, a-z, A-Z, 1-9, and !@#$%" />
       </Form.Item>
@@ -48,8 +44,7 @@ const AccountInformation: FC<AccountInformationProps> = ({ form }) => {
         ]}
       >
         <Input.Password placeholder="Enter password again" />
-      </Form.Item>
-    </Form>
+      </Form.Item></>
   );
 };
 
