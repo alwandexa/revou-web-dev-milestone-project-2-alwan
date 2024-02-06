@@ -1,9 +1,53 @@
 html {
   height: 100vh;
 }
+
 body {
   height: 100vh;
   margin: 0;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5em;
+  height: 3em;
+  background-color: #0226dd !important;
+}
+
+header img,
+footer img {
+  width: 15em;
+}
+
+.ant-layout-header {
+  line-height: 0;
+}
+
+header input {
+  /* flex-grow: 1; */
+  width: 50%;
+  margin: 2em;
+  border-radius: 1em;
+  border: none;
+  padding: 1em;
+}
+
+header button {
+  margin: 0.5em;
+}
+
+footer {
+  text-align: center;
+  font-size: small;
+}
+
+.header-button-holder {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 input {
@@ -66,6 +110,20 @@ input {
 @media screen and (max-width: 1300px) {
   .step-content {
     width: 80%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  header img {
+    width: 50%;
+  }
+
+  footer img {
+    width: 10em;
+  }
+
+  input {
+    display: none;
   }
 }
 
