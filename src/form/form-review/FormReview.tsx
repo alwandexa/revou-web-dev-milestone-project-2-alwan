@@ -1,32 +1,28 @@
-import React, { FC } from "react";
+import React from "react";
 
-import { Card, Form } from "antd";
+import { Card } from "antd";
 import Title from "antd/lib/typography/Title";
 
 import PersonalInformation from "../personal-information/PersonalInformation";
 import AddressInformation from "../address-information/AddressInformation";
 import AccountInformation from "../account-information/AccountInformation";
 
-interface FormReviewProps {
-  form: any;
-}
-
-const FormReview: FC<FormReviewProps> = ({ form }) => {
+const FormReview = () => {
   return (
-    <Form layout="vertical" disabled={true}>
+    <>
       <Title level={3}>Personal Information</Title>
       <Card>
-        <PersonalInformation form={form} />
+        <PersonalInformation />
       </Card>
       <Title level={3}>Address Information</Title>
       <Card>
-        <AddressInformation form={form} />
+        <AddressInformation />
       </Card>
       <Title level={3}>Account Information</Title>
       <Card>
-        <AccountInformation form={form} />
+        <AccountInformation />
       </Card>
-    </Form>
+    </>
   );
 };
 
