@@ -1,17 +1,10 @@
-import React, { FC } from 'react';
+import React from 'react';
 
 import { Form, Input, Select, Space } from "antd";
 
-interface AddressInformationProps {
-  form: any;
-}
-
-const AddressInformation: FC<AddressInformationProps> = ({ form }) => {
+const AddressInformation = () => {
   return (
-    <Form
-      form={form}
-      layout="vertical"
-    >
+    <>
       <Form.Item
         name="Street Adress"
         label="Street Adress"
@@ -61,7 +54,7 @@ const AddressInformation: FC<AddressInformationProps> = ({ form }) => {
           <Select.Option value="China">China</Select.Option>
         </Select>
       </Form.Item>
-    </Form>
+    </>
   );
 };
 
