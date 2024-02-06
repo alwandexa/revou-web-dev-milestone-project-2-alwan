@@ -1,22 +1,24 @@
 import React, { FC } from "react";
 
-import { Layout } from "antd";
-import { Content } from "antd/es/layout/layout";
+import {
+  RecoilRoot,
+} from 'recoil';
 
 import "../src/css/main.css";
-import RegistrationForm from "./form/registration-form/RegistrationForm";
-import SideInfo from "./side-info/SideInfo";
+import Dashboard from "./pages/dashboard/Dashboard";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Registration from "./pages/registration/Registration";
 
 const App: FC = () => {
   return (
-    <Layout>
-      <Content>
-        <div className="main-content">
-          <SideInfo />
-          <RegistrationForm />
-        </div>
-      </Content>
-    </Layout>
+    <RecoilRoot>
+      <Router>
+        <Routes>
+          <Route index path="/" element={<Dashboard />} />
+          <Route path="/registration" element={<Registration />} />
+        </Routes>
+      </Router>
+    </RecoilRoot>
   );
 }
 
