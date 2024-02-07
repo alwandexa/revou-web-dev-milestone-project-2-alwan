@@ -1,7 +1,8 @@
+import { memo } from "react";
 import { Form, Input } from "antd";
 import { useTranslation } from 'react-i18next';
 
-const AccountInformation = () => {
+const AccountInformation = memo(() => {
   const { t } = useTranslation();
   const validPassword = new RegExp("^(?=.*?[A-Za-z])(?=.*?[0-9]).{8,}$");
 
@@ -46,6 +47,6 @@ const AccountInformation = () => {
         <Input.Password placeholder={t("re-password-placeholder")} />
       </Form.Item></>
   );
-};
+});
 
 export default AccountInformation;

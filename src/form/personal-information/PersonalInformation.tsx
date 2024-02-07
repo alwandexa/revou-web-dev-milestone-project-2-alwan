@@ -1,8 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 import { DatePicker, Form, Input, Radio, Space } from "antd";
 import { useTranslation } from "react-i18next";
 
-const PersonalInformation = () => {
+const PersonalInformation = memo(() => {
   const { t } = useTranslation();
 
   return (
@@ -51,6 +51,6 @@ const PersonalInformation = () => {
       </Form.Item>
     </>
   );
-};
+});
 
 export default PersonalInformation;

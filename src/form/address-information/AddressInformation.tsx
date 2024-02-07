@@ -1,7 +1,8 @@
+import { memo } from "react";
 import { Form, Input, Select, Space } from "antd";
 import { useTranslation } from 'react-i18next';
 
-const AddressInformation = () => {
+const AddressInformation = memo(() => {
   const { t } = useTranslation();
 
   return (
@@ -57,6 +58,6 @@ const AddressInformation = () => {
       </Space>
     </>
   );
-};
+});
 
 export default AddressInformation;
