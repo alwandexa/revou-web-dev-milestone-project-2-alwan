@@ -87,16 +87,19 @@ const RegistrationForm = () => {
     navigate('/');
   }
 
+  const validationReRender = () => {
+    const value = form.getFieldsError();
+
+    Object.entries(value).forEach((field: any) => {
+      if (field[1].errors.length !== 0) {
+        form.validateFields([field[1].name]);
+      }
+    });
+  }
+
   const changeLanguage = (language: string) => {
     i18n.changeLanguage(language).then(() => {
-      const value = form.getFieldsValue();
-
-      Object.entries(value).forEach((field: any) => {
-        if (form.isFieldTouched(field[0])) {
-          form.validateFields([field[0]]);
-        }
-      });
-
+      validationReRender();
     });
   };
 
