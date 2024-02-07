@@ -1,7 +1,6 @@
 import React from "react";
 import { DatePicker, Form, Input, Radio, Space } from "antd";
 import { useTranslation } from "react-i18next";
-// import i18n from "../../internalization/i18n";
 
 const PersonalInformation = () => {
   const { t } = useTranslation();
@@ -37,7 +36,10 @@ const PersonalInformation = () => {
           label={t("birthdate")}
           rules={[{ type: "date", required: true }]}
         >
-          <DatePicker placeholder=""/>
+          <DatePicker
+            placeholder=""
+            disabledDate={date => !date || date.isAfter(new Date())}
+          />
         </Form.Item>
       </Space.Compact>
 
