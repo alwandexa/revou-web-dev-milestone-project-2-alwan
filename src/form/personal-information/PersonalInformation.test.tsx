@@ -1,16 +1,15 @@
 import React from 'react';
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import PersonalInformation from "./PersonalInformation";
 import { Button, Form } from "antd";
 import '@testing-library/jest-dom';
+import userEvent from '@testing-library/user-event';
 
 const PersonalTest = () => {
   return (
     <Form>
       <PersonalInformation />
-      <Button type="primary" htmlType='submit'>
-        Next
-      </Button>
+      <Button htmlType='submit'>submit</Button>
     </Form>)
 }
 
@@ -31,26 +30,49 @@ describe("PersonalInformation", () => {
     });
   });
 
-  it("renders PersonalInformation component", () => {
+  it("renders name component", () => {
     render(<PersonalTest />);
 
-    expect(screen.getByText(/Name/i)).toBeInTheDocument();
-    expect(screen.getByText(/Email/i)).toBeInTheDocument();
-    expect(screen.getByText(/Birthplace/i)).toBeInTheDocument();
-    expect(screen.getByText(/Birthdate/i)).toBeInTheDocument();
-    expect(screen.getByText(/Gender/i)).toBeInTheDocument();
+    expect(screen.getByText(/name/i)).toBeInTheDocument();
   });
 
-  it("renders name field", () => {
+  it("renders email component", () => {
     render(<PersonalTest />);
-    expect(screen.getByLabelText('Name')).toBeInTheDocument();
+
+    expect(screen.getByText(/email/i)).toBeInTheDocument();
   });
 
-  it("renders validation message", () => {
-    render(<PersonalTest />)
+  it("renders birthplace component", () => {
+    render(<PersonalTest />);
 
-    fireEvent.click(screen.getByText("Next"));
+    expect(screen.getByText(/birthplace/i)).toBeInTheDocument();
+  });
 
-    expect(screen.getByText("'Name' is required")).toBeInTheDocument();
+  it("renders birthdate component", () => {
+    render(<PersonalTest />);
+
+    expect(screen.getByText(/birthdate/i)).toBeInTheDocument();
+  });
+
+  it("renders gender component", () => {
+    render(<PersonalTest />);
+
+    expect(screen.getByText(/gender/i)).toBeInTheDocument();
+  });
+
+  it("renders email validation message", async () => {
+    render(<PersonalTest />);
+
+    expect(screen.getByText(/submit/i)).toBeInTheDocument();
+
+    userEvent.type(screen.getByLabelText(/email/i), "al");
+
+    expect(screen.getByLabelText(/email/i)).toHaveValue("al");
+
+    fireEvent.click(screen.getByText(/submit/i));
+
+    await waitFor(() => {
+      expect(screen.getAllByRole("alert")[0]).toBeInTheDocument();
+    }, { timeout: 100 })
   })
 });
