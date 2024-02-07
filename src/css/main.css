@@ -1,9 +1,4 @@
-html {
-  height: 100vh;
-}
-
 body {
-  height: 100vh;
   margin: 0;
 }
 
@@ -26,7 +21,6 @@ footer img {
 }
 
 header input {
-  /* flex-grow: 1; */
   width: 50%;
   margin: 2em;
   border-radius: 1em;
@@ -79,6 +73,12 @@ input {
   flex-direction: column;
 }
 
+.form-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .side-info {
   width: 30%;
   padding: 2em;
@@ -88,6 +88,18 @@ input {
   flex-direction: column;
   align-content: center;
   justify-content: center;
+}
+
+.ant-card {
+  margin-bottom: 1em;
+}
+
+.dashboard-content{
+  padding: 2em;
+}
+
+.reverse-button {
+  width: 100%;
 }
 
 /* Scroll Bar */
@@ -114,8 +126,12 @@ input {
 }
 
 @media only screen and (max-width: 1000px) {
+  header {
+    padding: 0.5em !important;
+  }
+
   header img {
-    width: 50%;
+    width: 40%;
   }
 
   footer img {
