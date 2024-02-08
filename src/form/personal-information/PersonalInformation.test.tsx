@@ -60,19 +60,41 @@ describe("PersonalInformation", () => {
     expect(screen.getByText(/gender/i)).toBeInTheDocument();
   });
 
-  it("renders email validation message", async () => {
+  it("renders input required validation message", async () => {
     render(<PersonalTest />);
-
-    expect(screen.getByText(/submit/i)).toBeInTheDocument();
-
-    userEvent.type(screen.getByLabelText(/email/i), "al");
-
-    expect(screen.getByLabelText(/email/i)).toHaveValue("al");
 
     fireEvent.click(screen.getByText(/submit/i));
 
     await waitFor(() => {
-      expect(screen.getAllByRole("alert")[0]).toBeInTheDocument();
-    }, { timeout: 100 })
+      expect(screen.getByText("'Name' is required")).toBeInTheDocument();
+    }, { timeout: 1000 })
+
+    await waitFor(() => {
+      expect(screen.getByText("'Email' is required")).toBeInTheDocument();
+    }, { timeout: 1000 })
+
+    await waitFor(() => {
+      expect(screen.getByText("'Birthplace' is required")).toBeInTheDocument();
+    }, { timeout: 1000 })
+
+    await waitFor(() => {
+      expect(screen.getByText("'Birthdate' is required")).toBeInTheDocument();
+    }, { timeout: 1000 })
+
+    await waitFor(() => {
+      expect(screen.getByText("'Gender' is required")).toBeInTheDocument();
+    }, { timeout: 1000 })
+  })
+
+  it("renders email invalid validation message", async () => {
+    render(<PersonalTest />);
+
+    userEvent.type(screen.getByLabelText(/email/i), "test");
+
+    expect(screen.getByLabelText(/email/i)).toHaveValue("test");
+
+    await waitFor(() => {
+      expect(screen.getByText("'Email' is not a valid email")).toBeInTheDocument();
+    }, { timeout: 1000 })
   })
 });
