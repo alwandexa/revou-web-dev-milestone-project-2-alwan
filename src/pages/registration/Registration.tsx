@@ -1,6 +1,7 @@
 import Layout, { Content } from "antd/es/layout/layout";
-import SideInfo from "../../side-info/SideInfo";
-import RegistrationForm from "../../form/registration-form/RegistrationForm";
+
+import SideInfo from "../../components/side-info/SideInfo";
+import RegistrationForm from "../../components/form/registration-form/RegistrationForm";
 
 const Registration = () => {
     return (

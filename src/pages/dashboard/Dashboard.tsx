@@ -8,28 +8,8 @@ import Paragraph from "antd/es/typography/Paragraph";
 import Title from "antd/es/typography/Title";
 import { MenuFoldOutlined } from "@ant-design/icons";
 
-import i18n from "../../internalization/i18n";
 import { registeredData } from "../../recoil/atom/RegisteredData";
-
-const DexaHeader = ({ t }: any) => {
-    return (
-        <>
-            <img src={process.env.PUBLIC_URL + "logo-white.png"} alt="Company Logo" />
-            <input type="search" placeholder={t("search-placeholder")} />
-            <Select
-                defaultValue="en"
-                onChange={(language) => changeLanguage(language)}
-                options={[
-                    { value: 'en', label: 'EN' },
-                    { value: 'id', label: 'ID' },]}
-            />
-        </>
-    )
-}
-
-const changeLanguage = (language: string) => {
-    i18n.changeLanguage(language);
-};
+import DexaHeader from "../../components/dexa-header/DexaHeader";
 
 const Dashboard = () => {
     const user = useRecoilValue(registeredData);

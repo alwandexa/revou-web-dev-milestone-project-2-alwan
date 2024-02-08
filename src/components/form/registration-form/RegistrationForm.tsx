@@ -9,7 +9,7 @@ import PersonalInformation from "../personal-information/PersonalInformation";
 import AddressInformation from "../address-information/AddressInformation";
 import AccountInformation from "../account-information/AccountInformation";
 import FormReview from "../form-review/FormReview";
-import { registeredData } from "../../recoil/atom/RegisteredData";
+import { registeredData } from "../../../recoil/atom/RegisteredData";
 import { useTranslation } from "react-i18next";
 
 const RegistrationForm = () => {
