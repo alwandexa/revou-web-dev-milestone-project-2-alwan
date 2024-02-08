@@ -1,15 +1,15 @@
+import { useEffect, useState } from "react";
 import { Button, Card, Col, Layout, Row, Select, Timeline } from "antd"
 import { Content, Footer, Header } from "antd/es/layout/layout";
-import { useRecoilValue } from "recoil";
-import { registeredData } from "../../recoil/atom/RegisteredData";
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import i18n from "../../internalization/i18n";
-import Title from "antd/es/typography/Title";
 import Paragraph from "antd/es/typography/Paragraph";
 import { MenuFoldOutlined } from "@ant-design/icons";
+import Title from "antd/es/typography/Title";
+import { useRecoilValue } from "recoil";
 
+import i18n from "../../internalization/i18n";
+import { registeredData } from "../../recoil/atom/RegisteredData";
 
 const DexaHeader = ({ t }: any) => {
     return (
@@ -35,14 +35,6 @@ const Dashboard = () => {
     const user = useRecoilValue(registeredData);
     const [reverse, setReverse] = useState(false);
 
-    // const user = {
-    //     Name: "Revou",
-    //     Address: "Mojolegi, Teras, Boyolali",
-    //     Email: "alwan.wirawan@djembatandua.com",
-    //     Birthdate: "12/12/1999",
-    //     Birthplace: "Boyolali",
-    // }
-
     const { t } = useTranslation();
 
     const navigate = useNavigate();
@@ -52,12 +44,6 @@ const Dashboard = () => {
             navigate("/registration");
         }
     });
-
-    useEffect(() => {
-        console.log("Dashboard");
-        console.log(user);
-    });
-
 
     const timelineList = [
         {
