@@ -17,7 +17,7 @@
   "step": "Step",
   "previous": "Previous",
   "next": "Next",
-  "submit": "Daftar",
+  "submit": "Submit",
 
   "is-required" : "is required",
   "invalid" : "invalid",
@@ -37,10 +37,10 @@
   "female": "Female",
 
   "street-adress": "Street Adress",
-  "city": "Kota",
-  "state": "Provinsi",
-  "zip-code": "Kode POS",
-  "country": "Negara",
+  "city": "City",
+  "state": "State",
+  "zip-code": "ZIP Code",
+  "country": "Country",
 
   "username": "Username",
   "password": "Password",
