@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { useTranslation } from "react-i18next";
 import { Button, Card, Col, Layout, Row, Select, Timeline } from "antd"
 import { Content, Footer, Header } from "antd/es/layout/layout";
-import { useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next";
 import Paragraph from "antd/es/typography/Paragraph";
-import { MenuFoldOutlined } from "@ant-design/icons";
 import Title from "antd/es/typography/Title";
-import { useRecoilValue } from "recoil";
+import { MenuFoldOutlined } from "@ant-design/icons";
 
 import i18n from "../../internalization/i18n";
 import { registeredData } from "../../recoil/atom/RegisteredData";
