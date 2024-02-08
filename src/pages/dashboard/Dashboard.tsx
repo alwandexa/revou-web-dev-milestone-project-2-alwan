@@ -66,7 +66,7 @@ const Dashboard = () => {
                 <div className="dashboard-content">
                     <h1>{t("greeting")}, {user.Name.toLocaleUpperCase()}!</h1>
 
-                    <Row gutter={[24, 0]}>
+                    <Row gutter={[24, 24]}>
                         <Col xs={24} sm={24} md={12} lg={12} xl={16} className="">
                             <Card>
                                 <Title level={2}>{t("your-data")}</Title>
@@ -76,7 +76,6 @@ const Dashboard = () => {
                                     <Title level={4}>{t("address")}</Title>
                                     {user.City}
                                     <Title level={4}>{t("birthdate")}</Title>
-                                    {/* {user.Birthdate.toString()} */}
                                     {(date.getMonth() + 1) + '-' + date.getDate() + '-' + date.getFullYear()}
                                     <Title level={4}>{t("birthplace")}</Title>
                                     {user.Birthplace}
