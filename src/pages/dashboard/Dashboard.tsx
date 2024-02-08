@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { useTranslation } from "react-i18next";
-import { Button, Card, Col, Layout, Row, Select, Timeline } from "antd"
+import { Button, Card, Col, Layout, Row, Timeline } from "antd"
 import { Content, Footer, Header } from "antd/es/layout/layout";
 import Paragraph from "antd/es/typography/Paragraph";
 import Title from "antd/es/typography/Title";
