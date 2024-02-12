@@ -1,16 +1,15 @@
-/* eslint-disable no-template-curly-in-string */
 import React, { useState } from "react";
 import { Button, Card, Flex, Form, Select, Steps } from "antd";
 import Title from "antd/lib/typography/Title";
 import { useSetRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
-
-import PersonalInformation from "../personal-information/PersonalInformation";
-import AddressInformation from "../address-information/AddressInformation";
-import AccountInformation from "../account-information/AccountInformation";
-import FormReview from "../form-review/FormReview";
-import { registeredData } from "../../../recoil/atom/RegisteredData";
 import { useTranslation } from "react-i18next";
+
+import PersonalInformation from "../../components/form/personal-information/PersonalInformation";
+import AddressInformation from "../../components/form/address-information/AddressInformation";
+import AccountInformation from "../../components/form/account-information/AccountInformation";
+import FormReview from "../../components/form/form-review/FormReview";
+import { registeredData } from "../../recoil/atom/RegisteredData";
 
 const RegistrationForm = () => {
   const [form] = Form.useForm();
@@ -20,10 +19,11 @@ const RegistrationForm = () => {
   const navigate = useNavigate();
 
   const validateMessages = {
+    // eslint-disable-next-line no-template-curly-in-string
     required: '${label} ' + t("is-required"),
     types: {
+      // eslint-disable-next-line no-template-curly-in-string
       email: '${label} ' + t("invalid"),
-      number: '${label} ' + t("invalid"),
     },
   };
 
