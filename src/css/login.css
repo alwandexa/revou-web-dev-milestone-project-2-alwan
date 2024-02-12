@@ -1,0 +1,59 @@
+.login-content {
+  height: 100vh;
+  display: flex;
+}
+
+.login-card {
+  margin: auto;
+  width: 30%;
+  color: white;
+  background-color: #0226dd;
+}
+
+.login-card img {
+  width: 10em;
+}
+
+.login-card h1 {
+  font-size: 3.5em;
+  margin: 0;
+}
+
+.login-card label {
+  color: white !important;
+  font-size: 1.25em !important;
+}
+
+.login-card p {
+  color: white !important;
+}
+
+.login-card a {
+  color: ghostwhite;
+  text-decoration: underline;
+}
+
+.login-button {
+  width: 100%;
+  height: 2em;
+  font-size: 1.35em;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 1200px) {
+  .login-card {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .login-card {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .login-card {
+    width: 100%;
+  }
+}
