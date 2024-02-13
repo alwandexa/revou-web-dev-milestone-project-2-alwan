@@ -31,7 +31,7 @@ const AddCourse = () => {
     return (
         <Layout>
             <Header>
-                <DexaHeader t={t} />
+                <DexaHeader />
             </Header>
             <Content className="add-item-content">
                 <Card className="add-item-card">
@@ -52,9 +52,11 @@ const AddCourse = () => {
                         >
                             <Input />
                         </Form.Item>
-                        <Button type="primary" htmlType="submit">
-                            {t("add")}
-                        </Button>
+                        <div className="add-button-holder">
+                            <Button type="primary" htmlType="submit">
+                                {t("add")}
+                            </Button>
+                        </div>
                     </Form>
                 </Card>
             </Content>
