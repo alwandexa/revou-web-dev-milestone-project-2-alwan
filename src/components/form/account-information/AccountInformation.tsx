@@ -9,7 +9,7 @@ const AccountInformation = memo(() => {
   return (
     <>
       <Form.Item
-        name="Username"
+        name="username"
         label={t("username")}
         rules={[{ type: "string", required: true }]}
       >
@@ -17,24 +17,24 @@ const AccountInformation = memo(() => {
       </Form.Item>
 
       <Form.Item
-        name="Password"
+        name="password"
         label={t("password")}
         rules={[{ type: "string", pattern: validPassword, message: t("password-validation"), required: true }]}
       >
-        <Input.Password placeholder={t("password-placeholder")} />
+        <Input.Password placeholder={t("password-placeholder")} autoComplete="new-password" />
       </Form.Item>
 
       <Form.Item
-        name="Re-Password"
+        name="rePassword"
         label={t("re-password")}
-        dependencies={["Password"]}
+        dependencies={["password"]}
         rules={[
           {
             required: true,
           },
           ({ getFieldValue }) => ({
             validator(_, value) {
-              if (!value || getFieldValue("Password") === value) {
+              if (!value || getFieldValue("password") === value) {
                 return Promise.resolve();
               }
               return Promise.reject(
