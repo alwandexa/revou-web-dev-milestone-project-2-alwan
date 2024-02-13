@@ -1,14 +1,29 @@
 import { Button, Card, Form, Input, Layout } from "antd";
 import { Content } from "antd/es/layout/layout";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 import "../../css/login.css";
 
 const Login = () => {
     const [form] = Form.useForm();
     const { t } = useTranslation();
+    const navigate = useNavigate();
 
-    const validPassword = new RegExp("^(?=.*?[A-Za-z])(?=.*?[0-9]).{8,}$");
+    const checkCredential = () => {
+        const bcrypt = require('bcryptjs');
+
+        const checkUsername = form.getFieldValue("Username") === localStorage.getItem("username");
+        const checkHash = bcrypt.compareSync(form.getFieldValue("Password"), localStorage.getItem("hash"));
+
+        if (checkUsername && checkHash) {
+            localStorage.setItem("isLoggedIn", "true");
+            navigate("/");
+        }
+        else {
+            alert("Wrong Password");
+        }
+    }
 
     return (
         <>
@@ -18,7 +33,8 @@ const Login = () => {
                         <img src={process.env.PUBLIC_URL + "logo-white.png"} alt="Company Logo" />
                         <h1>{t("sign-in")}</h1>
                         <p>{t("new-to-dexademy")} <a href="/registration">{t("create-account")}</a></p>
-                        <Form form={form} layout="vertical" hideRequiredMark>
+                        
+                        <Form form={form} layout="vertical" onFinish={checkCredential} hideRequiredMark>
                             <Form.Item
                                 name="Username"
                                 label={t("username")}
@@ -30,7 +46,7 @@ const Login = () => {
                             <Form.Item
                                 name="Password"
                                 label={t("password")}
-                                rules={[{ type: "string", pattern: validPassword, message: t("password-validation"), required: true }]}
+                                rules={[{ type: "string", required: true }]}
                             >
                                 <Input.Password />
                             </Form.Item>
@@ -40,7 +56,7 @@ const Login = () => {
                             <Button htmlType="submit" className="login-button">{t("sign-in")}</Button>
                         </Form>
                         <p>{t("need-to-find")} <a href="/">{t("your-password")}</a></p>
-                    </Card>                    
+                    </Card>
                 </Content>
             </Layout>
         </>
