@@ -81,8 +81,18 @@ const RegistrationForm = () => {
     form.submit();
   };
 
+  const storeCredential = () => {
+    const bcrypt = require('bcryptjs');
+
+    const hash = bcrypt.hashSync(form.getFieldValue("Password"), 10);
+
+    localStorage.setItem('username', form.getFieldValue("Username"));
+    localStorage.setItem('hash', hash);
+  }
+
   const handleSubmitForm = () => {
     setRegisteredFormData(form.getFieldsValue());
+    storeCredential();
     form.resetFields();
     navigate('/');
   }
@@ -102,7 +112,6 @@ const RegistrationForm = () => {
       validationReRender();
     });
   };
-
 
   return (
     <>
