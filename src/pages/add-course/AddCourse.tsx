@@ -4,7 +4,7 @@ import { Content, Footer, Header } from "antd/es/layout/layout";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
-import "../../css/add-item.css";
+import "../../css/add-course.css";
 
 const AddCourse = () => {
     const [form] = Form.useForm();
@@ -12,13 +12,18 @@ const AddCourse = () => {
     const navigate = useNavigate();
 
     const addCourse = () => {
+        const userIndex = localStorage.getItem("userIndex") as string;
         let courses = JSON.parse(localStorage.getItem("courses") || "[]");
 
-        courses.push({
+        let userCourse = courses[userIndex] || [];
+
+        userCourse.push({
             course_name: form.getFieldValue("Course"),
             instructor: form.getFieldValue("Instructor"),
             enroll_date: new Date().toLocaleDateString(),
         });
+
+        courses[userIndex] = userCourse;
 
         localStorage.setItem("courses", JSON.stringify(courses));
     }
