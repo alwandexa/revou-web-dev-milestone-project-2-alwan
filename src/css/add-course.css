@@ -1,0 +1,28 @@
+.add-item-content {
+  display: flex;
+  padding: 2em;
+}
+
+.add-item-card {
+  margin: auto;
+  width: 30%;
+}
+
+.add-button-holder {
+  display: flex;
+  justify-content: right;
+}
+
+@media screen and (max-width: 1200px) {
+  .add-item-card {
+    width: 50%;
+  }
+}
+
+
+@media screen and (max-width: 1000px) {
+  .add-item-card {
+    width: 100%;
+  }
+}
+
