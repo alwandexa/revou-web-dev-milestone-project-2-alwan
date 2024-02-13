@@ -2,7 +2,6 @@ import { Button, Card, Form, Input, Layout } from "antd";
 import { Content } from "antd/es/layout/layout";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-
 import "../../css/login.css";
 
 const Login = () => {
@@ -12,16 +11,23 @@ const Login = () => {
 
     const checkCredential = () => {
         const bcrypt = require('bcryptjs');
+        const users = JSON.parse(localStorage.getItem("users") as string);
+        let check = false;
 
-        const checkUsername = form.getFieldValue("Username") === localStorage.getItem("username");
-        const checkHash = bcrypt.compareSync(form.getFieldValue("Password"), localStorage.getItem("hash"));
+        users.forEach((user: any, index: number) => {
+            const checkUsername = form.getFieldValue("username") === user.username;
+            const checkHash = bcrypt.compareSync(form.getFieldValue("password"), user.hash);
 
-        if (checkUsername && checkHash) {
-            localStorage.setItem("isLoggedIn", "true");
-            navigate("/");
-        }
-        else {
-            alert("Wrong Password");
+            if (checkUsername && checkHash) {
+                check = true;
+                localStorage.setItem("isLoggedIn", "true");
+                localStorage.setItem("userIndex", index.toString());
+                navigate("/");
+            }
+        });
+
+        if (!check) {
+            alert(t("wrong-username-or-password"));
         }
     }
 
@@ -33,10 +39,9 @@ const Login = () => {
                         <img src={process.env.PUBLIC_URL + "logo-white.png"} alt="Company Logo" />
                         <h1>{t("sign-in")}</h1>
                         <p>{t("new-to-dexademy")} <a href="/registration">{t("create-account")}</a></p>
-                        
                         <Form form={form} layout="vertical" onFinish={checkCredential} hideRequiredMark>
                             <Form.Item
-                                name="Username"
+                                name="username"
                                 label={t("username")}
                                 rules={[{ type: "string", required: true }]}
                             >
@@ -44,7 +49,7 @@ const Login = () => {
                             </Form.Item>
 
                             <Form.Item
-                                name="Password"
+                                name="password"
                                 label={t("password")}
                                 rules={[{ type: "string", required: true }]}
                             >

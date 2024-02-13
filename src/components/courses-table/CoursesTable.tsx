@@ -33,7 +33,10 @@ const CoursesTable = () => {
         },
     ];
 
-    let data: DataType[] = JSON.parse(localStorage.getItem("courses") || "[]");
+    const userIndex = localStorage.getItem("userIndex") || 0;
+    const userData = JSON.parse(localStorage.getItem("courses") || "[]");
+
+    let data: DataType[] = userData[userIndex];
 
     data.map((item, index) => {
         item.key = index.toString();
@@ -49,7 +52,7 @@ const CoursesTable = () => {
             <div className="button-holder">
                 <Title level={2}>{t("your-courses")}</Title>
                 <Button type="primary" onClick={handleAddButton}>
-                    <PlusOutlined style={{ fontSize: "1.5em"}} />
+                    <PlusOutlined style={{ fontSize: "1.5em" }} />
                 </Button>
             </div>
             <Table columns={columns} dataSource={data} />

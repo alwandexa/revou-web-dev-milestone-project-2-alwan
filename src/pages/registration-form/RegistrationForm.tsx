@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Button, Card, Flex, Form, Select, Steps } from "antd";
 import Title from "antd/lib/typography/Title";
-import { useSetRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -9,23 +8,21 @@ import PersonalInformation from "../../components/form/personal-information/Pers
 import AddressInformation from "../../components/form/address-information/AddressInformation";
 import AccountInformation from "../../components/form/account-information/AccountInformation";
 import FormReview from "../../components/form/form-review/FormReview";
-import { registeredData } from "../../recoil/atom/RegisteredData";
 
 const RegistrationForm = () => {
   const [form] = Form.useForm();
   const [current, setCurrent] = useState(0);
   const { t, i18n } = useTranslation();
-  const setRegisteredFormData = useSetRecoilState(registeredData)
   const navigate = useNavigate();
 
+  /* eslint-disable no-template-curly-in-string */
   const validateMessages = {
-    // eslint-disable-next-line no-template-curly-in-string
     required: '${label} ' + t("is-required"),
     types: {
-      // eslint-disable-next-line no-template-curly-in-string
       email: '${label} ' + t("invalid"),
     },
   };
+  /* eslint-enable no-template-curly-in-string */
 
   const steps = [
     {
@@ -81,18 +78,26 @@ const RegistrationForm = () => {
     form.submit();
   };
 
-  const storeCredential = () => {
+  const storeUser = () => {
     const bcrypt = require('bcryptjs');
 
-    const hash = bcrypt.hashSync(form.getFieldValue("Password"), 10);
+    let userList = [JSON.parse(localStorage.getItem("users") || '[]')];
+    let currentUser = form.getFieldsValue();
 
-    localStorage.setItem('username', form.getFieldValue("Username"));
-    localStorage.setItem('hash', hash);
+    currentUser.hash = bcrypt.hashSync(currentUser.password, 10);
+
+    delete currentUser.password;
+    delete currentUser.rePassword;
+
+    console.log(userList);
+
+    userList.push(currentUser);
+
+    localStorage.setItem('user', JSON.stringify(userList));
   }
 
   const handleSubmitForm = () => {
-    setRegisteredFormData(form.getFieldsValue());
-    storeCredential();
+    storeUser();
     form.resetFields();
     navigate('/');
   }
