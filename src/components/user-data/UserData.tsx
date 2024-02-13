@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 const UserData = () => {
     const { t } = useTranslation();
 
-    let user = JSON.parse(localStorage.getItem("user") as string);
+    let user = JSON.parse(localStorage.getItem("users") as string)[localStorage.getItem("userIndex") as string];
 
     const date = new Date(user.Birthdate);
 
