@@ -5,14 +5,21 @@ const AuthCheck = ({ children }: { children: JSX.Element }) => {
     const location = useLocation();
     const navigate = useNavigate();
 
+    let component = children;
+
+    const session = localStorage.getItem("isLoggedIn");
+
+    if (!session) {
+        component = <></>;
+    }
+
     useEffect(() => {
-        const session = localStorage.getItem("isLoggedIn");
         if (!session) {
-            return navigate("/login", { state: { from: location } });
+            navigate("/login", { state: { from: location } });
         }
     });
 
-    return children;
+    return component;
 };
 
 export default AuthCheck;
