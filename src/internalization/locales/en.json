@@ -2,11 +2,19 @@
   "greeting": "Hello",
   "sign-in": "Sign In",
   "sign-up": "Sign Up",
+  "sign-out": "Sign Out",
   "search-placeholder": "Search for anything",
   "your-data": "Your Data",
+  "your-courses": "Your Courses",
   "learning-history": "Learning History",
   "this-month": "This month",
   "reverse": "Reverse",
+  "add-course": "Add Course",
+  "new-to-dexademy": "New to DexaDemy ?",
+  "create-account": "Create a new  account",
+  "keep-me-signed-in": "Keep me signed in on this device ?",
+  "need-to-find": "Need to find ",
+  "your-password": "your password ?",
 
   "registration": "Registration",
   "why-choose-us": "Why choose us?",
@@ -18,14 +26,15 @@
   "previous": "Previous",
   "next": "Next",
   "submit": "Submit",
+  "add": "Add",
 
-  "is-required" : "is required",
-  "invalid" : "invalid",
-  "password-validation" : "Password don't meet requirement",
-  "password-not-match" : "Password that you entered do not match",
+  "is-required": "is required",
+  "invalid": "invalid",
+  "password-validation": "Password didn't meet requirement",
+  "password-not-match": "Password that you entered do not match",
 
-  "password-placeholder" : "Password must contain at least 8 characters, a-z, A-Z, 1-9, and !@#$%",
-  "re-password-placeholder" : "Enter password again",
+  "password-placeholder": "Password must contain at least 8 characters, a-z, A-Z, 1-9, and !@#$%",
+  "re-password-placeholder": "Enter password again",
 
   "name": "Name",
   "email": "Email",
@@ -35,6 +44,7 @@
   "gender": "Gender",
   "male": "Male",
   "female": "Female",
+  "amount": "Amount",
 
   "street-adress": "Street Adress",
   "city": "City",
@@ -44,5 +54,8 @@
 
   "username": "Username",
   "password": "Password",
-  "re-password" : "Re-password"
+  "re-password": "Re-password",
+
+  "course": "Course",
+  "instructor": "Instructor"
 }
