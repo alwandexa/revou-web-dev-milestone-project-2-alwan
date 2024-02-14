@@ -34,14 +34,18 @@ const CoursesTable = () => {
     ];
 
     const userIndex = localStorage.getItem("userIndex") || 0;
-    const userData = JSON.parse(localStorage.getItem("courses") || "[]");
+    const userData = JSON.parse(localStorage.getItem("courses") as string) || [];
+
+    console.log(userData)
 
     let data: DataType[] = userData[userIndex];
 
-    data.map((item, index) => {
-        item.key = index.toString();
-        return item;
-    });
+    if(data){
+        data.map((item, index) => {
+            item.key = index.toString();
+            return item;
+        });
+    }
 
     const handleAddButton = () => {
         navigate("/add-course");
