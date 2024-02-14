@@ -2,13 +2,25 @@ body {
   margin: 0;
 }
 
+main {
+  background-color: rgb(226, 226, 226);
+}
+
 footer {
   text-align: center;
   font-size: small;
 }
 
+button {
+  min-height: 44px;
+}
+
 input {
   color: black !important;
+}
+
+.ant-select {
+  min-height: 44px;
 }
 
 .ant-radio-wrapper {
@@ -53,7 +65,14 @@ input {
   justify-content: center;
 }
 
-.dashboard-content{
+.button-holder {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dashboard-content {
   padding: 2em;
 }
 
@@ -81,24 +100,6 @@ input {
 @media screen and (max-width: 1300px) {
   .step-content {
     width: 80%;
-  }
-}
-
-@media only screen and (max-width: 1000px) {
-  header {
-    padding: 0.5em !important;
-  }
-
-  header img {
-    width: 40%;
-  }
-
-  footer img {
-    width: 10em;
-  }
-
-  input {
-    display: none;
   }
 }
 
