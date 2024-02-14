@@ -18,14 +18,16 @@ const Login = () => {
         let check = false;
 
         users.forEach((user: any, index: number) => {
-            const checkUsername = form.getFieldValue("username") === user.username;
-            const checkHash = bcrypt.compareSync(form.getFieldValue("password"), user.hash);
+            if(user.username) {
+                const checkUsername = form.getFieldValue("username") === user.username;
+                const checkHash = bcrypt.compareSync(form.getFieldValue("password"), user.hash);
 
-            if (checkUsername && checkHash) {
-                check = true;
-                localStorage.setItem("isLoggedIn", "true");
-                localStorage.setItem("userIndex", index.toString());
-                navigate("/");
+                if (checkUsername && checkHash) {
+                    check = true;
+                    localStorage.setItem("isLoggedIn", "true");
+                    localStorage.setItem("userIndex", index.toString());
+                    navigate("/");
+                }
             }
         });
 
