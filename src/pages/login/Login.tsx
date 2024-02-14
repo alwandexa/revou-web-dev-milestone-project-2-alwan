@@ -1,13 +1,16 @@
-import { Button, Card, Form, Input, Layout } from "antd";
+import { useState } from "react";
+import { Alert, Button, Card, Form, Input, Layout } from "antd";
 import { Content } from "antd/es/layout/layout";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+
 import "../../css/login.css";
 
 const Login = () => {
     const [form] = Form.useForm();
     const { t } = useTranslation();
     const navigate = useNavigate();
+    const [visible, setVisible] = useState(false);
 
     const checkCredential = () => {
         const bcrypt = require('bcryptjs');
@@ -27,7 +30,10 @@ const Login = () => {
         });
 
         if (!check) {
-            alert(t("wrong-username-or-password"));
+            setVisible(true);
+            setTimeout(() => {
+                setVisible(false);
+            }, 2000);
         }
     }
 
@@ -39,6 +45,7 @@ const Login = () => {
                         <img src={process.env.PUBLIC_URL + "logo-white.png"} alt="Company Logo" />
                         <h1>{t("sign-in")}</h1>
                         <p>{t("new-to-dexademy")} <a href="/registration">{t("create-account")}</a></p>
+                        {visible && <Alert className="login-alert" message="Check your username or password" type="error" showIcon />}
                         <Form form={form} layout="vertical" onFinish={checkCredential} hideRequiredMark>
                             <Form.Item
                                 name="username"
