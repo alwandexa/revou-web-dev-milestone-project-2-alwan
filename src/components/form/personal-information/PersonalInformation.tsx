@@ -1,9 +1,13 @@
 import React, { memo } from "react";
 import { DatePicker, Form, Input, Radio, Space } from "antd";
 import { useTranslation } from "react-i18next";
+import dayjs from 'dayjs';
 
 const PersonalInformation = memo(() => {
   const { t } = useTranslation();
+
+  const now = dayjs();
+  const eighteenYearsAgo = now.subtract(18, 'year');
 
   return (
     <>
@@ -39,6 +43,7 @@ const PersonalInformation = memo(() => {
           <DatePicker
             placeholder=""
             disabledDate={date => !date || date.isAfter(new Date())}
+            defaultPickerValue={eighteenYearsAgo}
           />
         </Form.Item>
       </Space.Compact>
