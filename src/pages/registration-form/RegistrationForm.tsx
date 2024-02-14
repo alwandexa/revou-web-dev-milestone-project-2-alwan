@@ -93,7 +93,7 @@ const RegistrationForm = () => {
 
     userList.push(currentUser);
 
-    localStorage.setItem('user', JSON.stringify(userList));
+    localStorage.setItem('users', JSON.stringify(userList));
   }
 
   const handleSubmitForm = () => {
