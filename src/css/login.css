@@ -40,6 +40,15 @@
   font-weight: bold;
 }
 
+.login-language {
+  display: flex;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  justify-content: right;
+  padding: 0.5em;
+}
+
 @media screen and (max-width: 1200px) {
   .login-card {
     width: 60%;

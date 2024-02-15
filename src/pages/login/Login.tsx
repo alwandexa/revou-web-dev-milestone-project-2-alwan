@@ -3,6 +3,7 @@ import { Content } from "antd/es/layout/layout";
 
 import "../../css/login.css";
 import LoginCard from "../../components/login-card/LoginCard";
+import LanguageSelector from "../../components/language-selector/LanguageSelector";
 
 const Login = () => {
     return (
@@ -10,6 +11,9 @@ const Login = () => {
             <Layout>
                 <Content className="login-content">
                     <LoginCard />
+                    <div className="login-language">
+                        <LanguageSelector />
+                    </div>
                 </Content>
             </Layout>
         </>
