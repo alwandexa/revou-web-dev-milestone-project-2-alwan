@@ -1,6 +1,7 @@
+import React from 'react';
 import { Card } from "antd";
-import Paragraph from "antd/es/typography/Paragraph";
-import Title from "antd/es/typography/Title";
+import Paragraph from "antd/lib/typography/Paragraph";
+import Title from "antd/lib/typography/Title";
 import { useTranslation } from "react-i18next";
 
 const UserData = () => {
