@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Button } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -6,7 +7,7 @@ import { LogoutOutlined } from "@ant-design/icons";
 import LanguageSelector from "../language-selector/LanguageSelector";
 import "../../css/header.css";
 
-const DexaHeader = () => {
+const DexaHeader = memo(() => {
     const { t } = useTranslation();
     const navigate = useNavigate();
 
@@ -25,6 +26,6 @@ const DexaHeader = () => {
             </div>
         </>
     )
-}
+});
 
 export default DexaHeader;
