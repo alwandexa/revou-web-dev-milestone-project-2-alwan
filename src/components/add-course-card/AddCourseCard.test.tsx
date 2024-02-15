@@ -35,7 +35,7 @@ describe("AddCourseCard", () => {
 
     it("renders add button", () => {
         render(<MemoryRouter> <AddCourseCard /></ MemoryRouter>);
-        expect(screen.getByText(/add/i)).toBeInTheDocument();
+        expect(screen.getByText(/add-course/i)).toBeInTheDocument();
     });
 
     it("renders input required validation message", async () => {
@@ -53,20 +53,18 @@ describe("AddCourseCard", () => {
     })
 
 
-    // it("calls handleSubmit when form is submitted", async () => {
-    //     render(
-    //         <MemoryRouter initialEntries={["/add-course"]}>
-    //             <AddCourseCard />
-    //         </MemoryRouter>
-    //     );
+    it("calls handleSubmit when form is submitted", async () => {
+        render(
+            <MemoryRouter initialEntries={["/add-course"]}>
+                <AddCourseCard />
+            </MemoryRouter>
+        );
 
-    //     userEvent.type(screen.getByLabelText("course"), "Test Course");
-    //     userEvent.type(screen.getByLabelText("instructor"), "Test Instructor");
+        userEvent.type(screen.getByLabelText("course"), "Test Course");
+        userEvent.type(screen.getByLabelText("instructor"), "Test Instructor");
 
-    //     userEvent.click(screen.getByText("add"));
+        userEvent.click(screen.getByText("add"));
 
-    //     await waitFor(() => {
-    //         expect(screen.getByText("Redirected to /")).toBeInTheDocument();
-    //     });
-    // });
+        expect(window.location.pathname).toBe("/");
+    });
 });
