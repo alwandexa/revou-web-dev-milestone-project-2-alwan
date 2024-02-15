@@ -1,9 +1,10 @@
+import React from 'react';
 import { memo, useState } from "react";
 import { MenuFoldOutlined } from "@ant-design/icons";
 import { Button, Card, Timeline } from "antd";
-import Paragraph from "antd/es/typography/Paragraph";
-import Title from "antd/es/typography/Title";
 import { useTranslation } from "react-i18next";
+import Title from "antd/lib/typography/Title";
+import Paragraph from "antd/lib/typography/Paragraph";
 
 const LearningHistory = memo(() => {
     const [reverse, setReverse] = useState(false);
