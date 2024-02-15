@@ -36,8 +36,6 @@ const CoursesTable = () => {
     const userIndex = localStorage.getItem("userIndex") || 0;
     const userData = JSON.parse(localStorage.getItem("courses") as string) || [];
 
-    console.log(userData)
-
     let data: DataType[] = userData[userIndex];
 
     if(data){
