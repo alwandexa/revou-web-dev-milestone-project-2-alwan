@@ -1,11 +1,11 @@
-import { memo } from "react";
+import React, { memo } from "react";
 import { Button } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { LogoutOutlined } from "@ant-design/icons";
 
 import LanguageSelector from "../language-selector/LanguageSelector";
-import "../../css/header.css";
+// import "../../css/header.css";
 
 const DexaHeader = memo(() => {
     const { t } = useTranslation();
@@ -22,7 +22,7 @@ const DexaHeader = memo(() => {
             <input type="search" placeholder={t("search-placeholder")} />
             <div>
                 <LanguageSelector />
-                <Button type="primary" onClick={logOut} danger><LogoutOutlined style={{ fontSize: "1.5em" }} /></Button>
+                <Button name="logout" type="primary" onClick={logOut} danger><LogoutOutlined style={{ fontSize: "1.5em" }} /></Button>
             </div>
         </>
     )
