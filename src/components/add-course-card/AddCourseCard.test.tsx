@@ -6,11 +6,6 @@ import '@testing-library/jest-dom';
 
 import AddCourseCard from "./AddCourseCard";
 
-jest.mock("react-router-dom", () => ({
-    ...jest.requireActual("react-router-dom"),
-    useNavigate: () => jest.fn(({ to }) => `Redirected to ${to}`),
-}));
-
 describe("AddCourseCard", () => {
     beforeAll(() => {
         Object.defineProperty(window, 'matchMedia', {
@@ -30,18 +25,32 @@ describe("AddCourseCard", () => {
 
     it("renders course input field", () => {
         render(<MemoryRouter> <AddCourseCard /></ MemoryRouter>);
-        expect(screen.getByLabelText("course")).toBeInTheDocument();
+        expect(screen.getByLabelText(/course/i)).toBeInTheDocument();
     });
 
     it("renders instructor input field", () => {
         render(<MemoryRouter> <AddCourseCard /></ MemoryRouter>);
-        expect(screen.getByLabelText("instructor")).toBeInTheDocument();
+        expect(screen.getByLabelText(/instructor/i)).toBeInTheDocument();
     });
 
     it("renders add button", () => {
         render(<MemoryRouter> <AddCourseCard /></ MemoryRouter>);
-        expect(screen.getByText("add")).toBeInTheDocument();
+        expect(screen.getByText(/add/i)).toBeInTheDocument();
     });
+
+    it("renders input required validation message", async () => {
+        render(<MemoryRouter> <AddCourseCard /></ MemoryRouter>);
+
+        userEvent.click(screen.getAllByText(/add/i)[1]);
+
+        await waitFor(() => {
+            expect(screen.getByText("'Course' is required")).toBeInTheDocument();
+        }, { timeout: 1000 })
+
+        await waitFor(() => {
+            expect(screen.getByText("'Instructor' is required")).toBeInTheDocument();
+        }, { timeout: 1000 })
+    })
 
 
     // it("calls handleSubmit when form is submitted", async () => {
@@ -55,7 +64,7 @@ describe("AddCourseCard", () => {
     //     userEvent.type(screen.getByLabelText("instructor"), "Test Instructor");
 
     //     userEvent.click(screen.getByText("add"));
-       
+
     //     await waitFor(() => {
     //         expect(screen.getByText("Redirected to /")).toBeInTheDocument();
     //     });
