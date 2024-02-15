@@ -1,3 +1,4 @@
+import React from "react";
 import { Button, Card, Form, Input } from "antd";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
@@ -28,6 +29,7 @@ const AddCourseCard = () => {
         addCourse();
         navigate("/");
     };
+
     return (
         <Card className="add-course-card">
             <h1>{t("add-course")}</h1>
