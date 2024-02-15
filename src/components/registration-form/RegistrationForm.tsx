@@ -4,10 +4,10 @@ import Title from "antd/lib/typography/Title";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import PersonalInformation from "../../components/form/personal-information/PersonalInformation";
-import AddressInformation from "../../components/form/address-information/AddressInformation";
-import AccountInformation from "../../components/form/account-information/AccountInformation";
-import FormReview from "../../components/form/form-review/FormReview";
+import PersonalInformation from "../form/personal-information/PersonalInformation";
+import AddressInformation from "../form/address-information/AddressInformation";
+import AccountInformation from "../form/account-information/AccountInformation";
+import FormReview from "../form/form-review/FormReview";
 
 const RegistrationForm = () => {
   const [form] = Form.useForm();
