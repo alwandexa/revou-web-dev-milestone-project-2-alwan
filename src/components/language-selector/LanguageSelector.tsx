@@ -1,3 +1,4 @@
+import React from "react";
 import { Select } from "antd";
 
 import i18n from "../../internalization/i18n";
