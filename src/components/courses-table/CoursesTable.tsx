@@ -1,6 +1,7 @@
+import React from "react";
 import { PlusOutlined } from "@ant-design/icons";
 import { Button, Card, Table, TableProps } from "antd";
-import Title from "antd/es/typography/Title";
+import Title from "antd/lib/typography/Title";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
@@ -53,7 +54,7 @@ const CoursesTable = () => {
         <Card>
             <div className="button-holder">
                 <Title level={2}>{t("your-courses")}</Title>
-                <Button type="primary" onClick={handleAddButton}>
+                <Button type="primary" role="add-course-button" onClick={handleAddButton}>
                     <PlusOutlined style={{ fontSize: "1.5em" }} />
                 </Button>
             </div>
