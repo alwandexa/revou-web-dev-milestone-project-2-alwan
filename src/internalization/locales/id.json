@@ -2,11 +2,19 @@
   "greeting": "Halo",
   "sign-in": "Masuk",
   "sign-up": "Daftar",
+  "sign-out": "Keluar",
   "search-placeholder": "Cari apa saja",
   "your-data": "Data Anda",
+  "your-courses": "Kursus Anda",
   "learning-history": "Riwayat Pembelajaran",
   "this-month": "Bulan ini",
   "reverse": "Balik",
+  "add-course": "Tambah Kursus",
+  "new-to-dexademy": "Baru mengenal DexaDemy?",
+  "create-account": "Buat akun baru",
+  "keep-me-signed-in": "Tetap masuk di perangkat ini?",
+  "need-to-find": "Butuh cari",
+  "your-password": "kata sandi Anda?",
 
   "registration": "Pendaftaran",
   "why-choose-us": "Mengapa memilih kami?",
@@ -17,15 +25,16 @@
   "step": "Langkah",
   "previous": "Sebelumnya",
   "next": "Berikutnya",
-  "submit": "Daftar",
+  "submit": "Kirim",
+  "add": "Tambah",
 
-  "is-required": "diperlukan",
+  "is-required": "wajib diisi",
   "invalid": "tidak valid",
-  "password-validation": "Kata sandi tidak sesuai ketentuan",
-  "password-not-match": "Kata sandi yang anda tulis tidak sama",
+  "password-validation": "Kata sandi tidak memenuhi persyaratan",
+  "password-not-match": "Kata sandi yang Anda masukkan tidak cocok",
 
-  "password-placeholder": "Kata sandi harus mengandung 8 karakter, a-z, A-Z, 1-9, dan !@#$%",
-  "re-password-placeholder": "Masukkan kembali kata sandi anda",
+  "password-placeholder": "Kata sandi harus mengandung setidaknya 8 karakter, a-z, A-Z, 1-9, dan !@#$%",
+  "re-password-placeholder": "Masukkan kata sandi lagi",
 
   "name": "Nama",
   "email": "Email",
@@ -35,8 +44,9 @@
   "gender": "Jenis Kelamin",
   "male": "Laki-laki",
   "female": "Perempuan",
+  "amount": "Jumlah",
 
-  "street-adress": "Jalan",
+  "street-adress": "Alamat Jalan",
   "city": "Kota",
   "state": "Provinsi",
   "zip-code": "Kode Pos",
@@ -44,5 +54,9 @@
 
   "username": "Nama Pengguna",
   "password": "Kata Sandi",
-  "re-password": "Ulangi Kata Sandi"
+  "re-password": "Ulangi Kata Sandi",
+
+  "course": "Kursus",
+  "instructor": "Instruktur",
+  "enrollment-date": "Tanggal Pendaftaran"
 }
