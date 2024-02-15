@@ -1,16 +1,16 @@
-import { memo, useState } from "react";
-import { Form, Input, Select, Space } from "antd";
+import { useState } from "react";
+import { Form, Input, Select } from "antd";
 import { useTranslation } from "react-i18next";
 
-interface Country { 
-  [key: string]: { states: string[] } 
+interface Country {
+  [key: string]: { states: string[] }
 }
 
 interface State {
   [key: string]: string[];
 }
 
-const AddressInformation = memo(() => {
+const AddressInformation = ({ form }: { form: any }) => {
   const { t } = useTranslation();
 
   const [country, setCountry] = useState("USA");
@@ -36,14 +36,19 @@ const AddressInformation = memo(() => {
   const handleCountryChange = (value: string) => {
     setCountry(value);
 
-    setState(countries[value].states[0]);
-    setCity(states[countries[value].states[0]][0]);
+    form.setFieldValue("State", "");
+    form.setFieldValue("City", "")
+    form.setFieldValue("ZIP Code", "")
+    form.setFieldValue("Street Adress", "")
   };
 
   const handleStateChange = (value: string) => {
     setState(value);
-
     setCity(states[value][0]);
+
+    form.setFieldValue("City", "");
+    form.setFieldValue("ZIP Code", "")
+    form.setFieldValue("Street Adress", "")
   };
 
   return (
@@ -57,24 +62,30 @@ const AddressInformation = memo(() => {
           },
         ]}
       >
-        <Select value={country} onChange={handleCountryChange}>
-          {Object.keys(countries).map((country) => (
-            <Select.Option key={country}>{country}</Select.Option>
-          ))}
+        <Select onChange={handleCountryChange} options={
+          Object.keys(countries).map((country) => {
+            return {
+              value: country,
+              label: country
+            }
+          })
+        }>
         </Select>
       </Form.Item>
 
-      {/* <Space> */}
       <Form.Item
         name="State"
         label={t("state")}
         rules={[{ type: "string", required: true }]}
       >
-        {/* <Input /> */}
-        <Select value={state} onChange={handleStateChange}>
-          {countries[country].states.map((state) => (
-            <Select.Option key={state}>{state}</Select.Option>
-          ))}
+        <Select onChange={handleStateChange} options={
+          countries[country].states.map((state) => {
+            return {
+              value: state,
+              label: state
+            }
+          })
+        }>
         </Select>
       </Form.Item>
 
@@ -83,11 +94,14 @@ const AddressInformation = memo(() => {
         label={t("city")}
         rules={[{ type: "string", required: true }]}
       >
-        {/* <Input /> */}
-        <Select value={city}>
-          {states[state as keyof State].map((city) => (
-            <Select.Option key={city}>{city}</Select.Option>
-          ))}
+        <Select value={city} options={
+          states[state].map((city) => {
+            return {
+              value: city,
+              label: city
+            }
+          })
+        }>
         </Select>
       </Form.Item>
 
@@ -98,7 +112,6 @@ const AddressInformation = memo(() => {
       >
         <Input type="number" />
       </Form.Item>
-      {/* </Space> */}
 
       <Form.Item
         name="Street Adress"
@@ -109,6 +122,6 @@ const AddressInformation = memo(() => {
       </Form.Item>
     </>
   );
-});
+};
 
 export default AddressInformation;

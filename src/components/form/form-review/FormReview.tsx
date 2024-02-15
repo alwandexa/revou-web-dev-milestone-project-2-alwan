@@ -18,7 +18,7 @@ const FormReview = memo(() => {
       </Card>
       <Title level={3}>{t("personal-information")}</Title>
       <Card>
-        <AddressInformation />
+        <AddressInformation form={"review"} />
       </Card>
       <Title level={3}>{t("account-information")}</Title>
       <Card>

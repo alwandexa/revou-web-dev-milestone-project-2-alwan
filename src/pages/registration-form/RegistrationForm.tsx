@@ -37,7 +37,7 @@ const RegistrationForm = () => {
       title: t("address-information"),
       content: (
         <Card>
-          <AddressInformation />
+          <AddressInformation form={form} />
         </Card>
       ),
     },
@@ -66,7 +66,7 @@ const RegistrationForm = () => {
       .then(() => {
         setCurrent(current + 1);
       }).catch((err) => {
-        console.log("Failed", err);
+        // console.log("Failed", err);
       });
   };
 
@@ -81,15 +81,13 @@ const RegistrationForm = () => {
   const storeUser = () => {
     const bcrypt = require('bcryptjs');
 
-    let userList = [JSON.parse(localStorage.getItem("users") || '[]')];
+    let userList = JSON.parse(localStorage.getItem("users") || '[]');
     let currentUser = form.getFieldsValue();
 
     currentUser.hash = bcrypt.hashSync(currentUser.password, 10);
 
     delete currentUser.password;
     delete currentUser.rePassword;
-
-    console.log(userList);
 
     userList.push(currentUser);
 
@@ -99,7 +97,7 @@ const RegistrationForm = () => {
   const handleSubmitForm = () => {
     storeUser();
     form.resetFields();
-    navigate('/');
+    navigate('/login');
   }
 
   const validationReRender = () => {
