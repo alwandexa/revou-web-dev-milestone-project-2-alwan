@@ -39,7 +39,7 @@ const LoginCard = () => {
 
     return (
         <Card className="login-card">
-            <img src={process.env.PUBLIC_URL + "logo-white.png"} alt="Company Logo" />
+            <img src={process.env.PUBLIC_URL + "logo-white.svg"} alt="Company Logo" />
             <h1>{t("sign-in")}</h1>
             <p>{t("new-to-dexademy")} <a href="/registration">{t("create-account")}</a></p>
             {visible && <Alert className="login-alert" message="Check your username or password" type="error" showIcon />}

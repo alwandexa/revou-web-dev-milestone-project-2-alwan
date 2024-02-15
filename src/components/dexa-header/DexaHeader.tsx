@@ -21,7 +21,7 @@ const DexaHeader = () => {
 
     return (
         <>
-            <img src={process.env.PUBLIC_URL + "logo-white.png"} alt="Company Logo" />
+            <img src={process.env.PUBLIC_URL + "logo-white.svg"} alt="Company Logo" />
             <input type="search" placeholder={t("search-placeholder")} />
             <div>
                 <Select
