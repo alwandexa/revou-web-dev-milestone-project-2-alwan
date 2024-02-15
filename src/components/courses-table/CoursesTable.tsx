@@ -17,17 +17,17 @@ const CoursesTable = () => {
 
     const columns: TableProps<DataType>["columns"] = [
         {
-            title: "Course",
+            title: t("course"),
             dataIndex: "course_name",
             key: "course_name",
         },
         {
-            title: "Instructor",
+            title: t("instructor"),
             dataIndex: "instructor",
             key: "instructor",
         },
         {
-            title: "Enrollment Date",
+            title: t("enrollment-date"),
             dataIndex: "enroll_date",
             key: "enroll_date",
         },
