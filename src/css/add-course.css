@@ -1,9 +1,9 @@
-.add-item-content {
+.add-course-content {
   display: flex;
   padding: 2em;
 }
 
-.add-item-card {
+.add-course-card {
   margin: auto;
   width: 30%;
 }
@@ -14,14 +14,14 @@
 }
 
 @media screen and (max-width: 1200px) {
-  .add-item-card {
+  .add-course-card {
     width: 50%;
   }
 }
 
 
 @media screen and (max-width: 1000px) {
-  .add-item-card {
+  .add-course-card {
     width: 100%;
   }
 }
