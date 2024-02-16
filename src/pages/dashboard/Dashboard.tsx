@@ -7,6 +7,8 @@ import LearningHistory from "../../components/learning-history/LearningHistory";
 import CoursesTable from "../../components/courses-table/CoursesTable";
 import UserData from "../../components/user-data/UserData";
 
+import "../../css/header.css";
+
 const Dashboard = () => {
     const user = JSON.parse(localStorage.getItem("users") as string)[localStorage.getItem("userIndex") as string];
 

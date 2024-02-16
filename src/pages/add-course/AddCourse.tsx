@@ -3,6 +3,7 @@ import { Content, Footer, Header } from "antd/es/layout/layout";
 
 import DexaHeader from "../../components/dexa-header/DexaHeader";
 import AddCourseCard from "../../components/add-course-card/AddCourseCard";
+import "../../css/header.css";
 import "../../css/add-course.css";
 
 const AddCourse = () => {
